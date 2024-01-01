@@ -1,9 +1,8 @@
 import { Router } from 'express'
+import UserController from '../controllers/UserController'
 
 const routes = Router()
 
-routes.post('/login', (req, res) => {
-    res.json('Hello World')
-})
+routes.post('/login', UserController.login)
 
 export default routes
