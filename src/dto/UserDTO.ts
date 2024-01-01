@@ -1,5 +1,3 @@
-import { uuid } from "uuidv4"
-
 export type UserAttributes = {
     id?: string,
     fullname: string,
@@ -24,7 +22,7 @@ export class UserDTO {
     private wishlist?: Array<string> | null
 
     constructor(payload: UserAttributes) {
-        this.id = payload.id ?? uuid()
+        this.id = payload.id ?? ''
         this.fullname = payload.fullname
         this.email = payload.email
         this.password = payload.password ?? ''

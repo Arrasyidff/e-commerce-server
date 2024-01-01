@@ -11,8 +11,10 @@ export default class UserService {
         try {
             if (!(['male', 'female']).includes(payload.gender)) throw {message: 'Sorry, the gender you selected is not available in our system.', status: 400}
             if (!payload?.password) throw {message: 'Password is required', status: 400}
+            
             payload.password = PasswordHandler.hash(payload.password)
-            const user = new UserDTO(payload)
+            const user = UserFactory.createFromFormData(payload)
+            
             const userRequest = await User.create(user.serializeToObject())
             return {success: true, message: 'Data found', data: userRequest}
         } catch (error) {
