@@ -1,8 +1,10 @@
+import { uuid } from "uuidv4"
+
 export type UserAttributes = {
     id?: string,
     fullname: string,
     email: string,
-    password: string,
+    password?: string,
     gender: 'male' | 'female',
     address: string,
     date_of_birth: Date,
@@ -11,7 +13,7 @@ export type UserAttributes = {
 } 
 
 export class UserDTO {
-    private id?: string | null
+    private id: string
     private fullname: string
     private email: string
     private password: string
@@ -22,10 +24,10 @@ export class UserDTO {
     private wishlist?: Array<string> | null
 
     constructor(payload: UserAttributes) {
-        this.id = payload.id ?? null
+        this.id = payload.id ?? uuid()
         this.fullname = payload.fullname
         this.email = payload.email
-        this.password = payload.password
+        this.password = payload.password ?? ''
         this.gender = payload.gender
         this.address = payload.address
         this.date_of_birth = payload.date_of_birth
@@ -35,7 +37,7 @@ export class UserDTO {
 
     public getId(): string
     {
-        return this.id ?? ''
+        return this.id
 
     }
     public getEmail(): string

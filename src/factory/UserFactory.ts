@@ -1,7 +1,7 @@
-import { UserDTO } from "../dto/UserDTO";
+import { UserAttributes, UserDTO } from "../dto/UserDTO";
 
 export default class UserFactory {
-    static createFromSqlObject(payload: any) {
+    static createFromSqlObject(payload: UserAttributes) {
         return new UserDTO({
             id: payload?.id,
             fullname: payload.fullname,
