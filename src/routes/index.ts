@@ -3,6 +3,7 @@ import UserController from '../controllers/UserController'
 
 const routes = Router()
 
+routes.post('/register', UserController.register)
 routes.post('/login', UserController.login)
 
 export default routes
